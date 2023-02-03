@@ -1,0 +1,13 @@
+services:
+  test-runner:
+    build: .
+    depends_on:
+      - db
+    environment:
+      MONGODB_URI: mongodb://root:test@db:27017
+  db:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: test
